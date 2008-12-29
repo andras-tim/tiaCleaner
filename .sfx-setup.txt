@@ -1,0 +1,11 @@
+;A következõ megjegyzés SFX script parancsokat tartalmaz
+
+Path=SM Karbantartas
+Setup="karbantartas setup.vbs"
+Title=Karbantartás
+Text
+{
+<u>Ajánlott ikon a parancsikonnak:</u><br/>
+%SystemRoot%\system32\cleanmgr.exe
+}
+Shortcut=S, "karbantartas.cmd", "", "", "Karbantartás"
