@@ -15,7 +15,6 @@ set mappa=%SYSTEMROOT%\Temp
 call "%aMAPP%\#erase-d.cmd"
 
 echo      * Programspecifikus...
-rmdir /s /q "%WINDIR%\..\CloneDVDTemp" > "%null1%" 2> "%null2%"
 rmdir /s /q "%USERPROFILE%\Local Settings\Temporary Internet Files\Content.MSO" > "%null1%" 2> "%null2%"
 rmdir /s /q "%USERPROFILE%\Local Settings\Temporary Internet Files\Content.Word" > "%null1%" 2> "%null2%"
 rmdir /s /q "%USERPROFILE%\Local Settings\Temporary Internet Files\Content.Excel" > "%null1%" 2> "%null2%"
@@ -24,7 +23,7 @@ rmdir /s /q "%USERPROFILE%\Local Settings\Temporary Internet Files\OLK???" > "%n
 rem del "%USERPROFILE%\Local Settings\Application Data\Google\GoogleEarth\dbCache.dat" > "%null1%" 2> "%null2%"
 rem del "%USERPROFILE%\Local Settings\Application Data\Google\GoogleEarth\dbCache.dat.index" > "%null1%" 2> "%null2%"
 
-rem MSOCache
+rem MSOCache, CloneDVD
 start "" /wait "%aMAPP%\temp_seged.vbs"
 call "%dirTMP%\tmp_clear_temp.cmd"
 del "%dirTMP%\tmp_clear_temp.cmd"
