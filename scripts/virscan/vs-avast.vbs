@@ -1,3 +1,5 @@
+'Keszitette: Tim Andras @ 2009
+
 Const Prg = """C:\program files\Alwil Software\Avast4\ashCmd.exe"""
 LogF = """%dirLOG%\%date%"
 DefParams = " --console --soundoff --continue /R=" & LogF
@@ -12,7 +14,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 
 Set filetxt = fso.OpenTextFile(dirTMP & "\tmp_virscan.cmd", ForWriting ,True)
 filetxt.WriteLine("@echo off" & vbcrlf & _
-                  "REM Keszitette: Tim Andras @ 2008" & vbcrlf)
+                  "REM Keszitette: Tim Andras @ 2009" & vbcrlf)
 
 filetxt.WriteLine("echo      * Mem¢ria ‚s Boot szektorok...")
 filetxt.WriteLine(Prg & " --boot" & DefParams & "Mem-HIBA"" > ""%null%""")

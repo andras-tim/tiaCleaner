@@ -1,3 +1,5 @@
+'Keszitette: Tim Andras @ 2009
+
 Const PrgDir = "C:\Program Files\ESET\ESET Smart Security"
 Const Prg = """C:\Program Files\ESET\ESET Smart Security\ecls.exe"""
 LogF = """%dirLOG%\%date%"
@@ -12,7 +14,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 
 Set filetxt = fso.OpenTextFile(dirTMP & "\tmp_virscan.cmd", ForWriting ,True)
 filetxt.WriteLine("@echo off" & vbcrlf & _
-                  "REM Keszitette: Tim Andras @ 2008" & vbcrlf)
+                  "REM Keszitette: Tim Andras @ 2009" & vbcrlf)
 
 For Each d in dc
   If d.DriveType = 2 Then

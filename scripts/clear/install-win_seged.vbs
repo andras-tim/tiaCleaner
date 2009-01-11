@@ -1,3 +1,5 @@
+'Keszitette: Tim Andras @ 2009
+
 Const aREG = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
 
 Const ForReading = 1
@@ -12,7 +14,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 
 Set filetxt = fso.OpenTextFile(dirTMP & "\tmp_clear_install.cmd", ForWriting ,True)
 filetxt.WriteLine("@echo off" & vbcrlf & _
-                  "REM Keszitette: Tim Andras @ 2008" & vbcrlf)
+                  "REM Keszitette: Tim Andras @ 2009" & vbcrlf)
 
 filetxt.WriteLine("echo      * ServicePack elt vol¡t¢k...")
 For Each f In wsfc
