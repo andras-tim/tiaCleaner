@@ -1,5 +1,5 @@
 @echo off
-REM Keszitette: Tim Andras @ 2008
+REM Keszitette: Tim Andras @ 2009
 
 title RENDSZER KARBANTARTµSA
 echo           (b rmikor le ll¡thatod a jobb fels‹ sarokban l‚v‹ 'X'-szel.)
@@ -7,7 +7,7 @@ echo.
 
 set winuser=>#FN#<
 set dirPRG=>#PDIR#<
-set server=smo.sytes.net
+set server=tia.sytes.net
 set spath=public/snail/karbantartas
 set sdirLOG=\\szerver\Kliens seg‚dletek\logs
 
