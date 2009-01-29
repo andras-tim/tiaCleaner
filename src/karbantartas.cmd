@@ -5,7 +5,7 @@ title RENDSZER KARBANTARTµSA
 echo           (b rmikor le ll¡thatod a jobb fels‹ sarokban l‚v‹ 'X'-szel.)
 echo.
 
-set winuser=>#FN#<
+set pcName=>#FN#<
 set dirPRG=>#PDIR#<
 set server=tia.sytes.net
 set spath=public/snail/karbantartas
@@ -76,7 +76,7 @@ rem ---Futtatas kiertekelese----------------------------------------------------
 echo.
 if not exist "%dirPRG%\DL\maxi_karbantartas.cmd" goto nincs
 set dirPRG=%dirPRG%\DL
-"%dirPRG%\maxi_karbantartas.cmd" %winuser% %*
+"%dirPRG%\maxi_karbantartas.cmd" %pcName% %*
 exit
 
 

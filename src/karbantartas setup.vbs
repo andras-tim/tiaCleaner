@@ -1,3 +1,5 @@
+'Keszitette: Tim Andras @ 2009
+
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 Set objFile = objFSO.GetFile("karbantartas.cmd")
 

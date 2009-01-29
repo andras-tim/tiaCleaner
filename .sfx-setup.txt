@@ -1,6 +1,6 @@
 ;A következõ megjegyzés SFX script parancsokat tartalmaz
 
-Path=SM Karbantartas
+Path=TiA Karbantartas
 Setup="karbantartas setup.vbs"
 Title=Karbantartás
 Text
