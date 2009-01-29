@@ -1,0 +1,13 @@
+@echo off
+REM Keszitette: Tim Andras @ 2009
+
+echo  * LOG f jlok...
+echo      * Windows friss¡t‚sek...
+del "%WINDIR%\KB*.log" > "%null1%" 2> "%null2%"
+echo      * Windows modem napl¢k...
+del "%WINDIR%\ModemLog_*.txt" > "%null1%" 2> "%null2%"
+
+
+echo      * Program napl¢k...
+rem Intel
+rmdir /s /q "%WINDIR%\..\Intel\Logs" > "%null1%" 2> "%null2%"

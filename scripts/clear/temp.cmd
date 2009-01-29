@@ -1,5 +1,5 @@
 @echo off
-REM Keszitette: Tim Andras @ 2008
+REM Keszitette: Tim Andras @ 2010
 
 echo  * Ideiglenes mapp k r¡t‚se...
 echo      * Alap‚rtelmezett...
@@ -12,6 +12,12 @@ call "%aMAPP%\#erase-d.cmd"
 
 echo      * Windows...
 set mappa=%SYSTEMROOT%\Temp
+call "%aMAPP%\#erase-d.cmd"
+
+set mappa=%ALLUSERSPROFILE%\..\LocalService\Local Settings\Temp
+call "%aMAPP%\#erase-d.cmd"
+
+set mappa=%ALLUSERSPROFILE%\..\NetworkService\Local Settings\Temp
 call "%aMAPP%\#erase-d.cmd"
 
 echo      * Programspecifikus...
@@ -29,5 +35,4 @@ call "%dirTMP%\tmp_clear_temp.cmd"
 del "%dirTMP%\tmp_clear_temp.cmd"
 
 rem Intel
-rmdir /s /q "%WINDIR%\..\Intel\Logs" > "%null1%" 2> "%null2%"
 rmdir "%WINDIR%\..\Intel" > "%null1%" 2> "%null2%

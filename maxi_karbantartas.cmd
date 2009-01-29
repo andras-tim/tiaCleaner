@@ -13,7 +13,7 @@ call "%dirPRG%\scripts\#init\set_path.cmd" %1
 
 rem ---KIERTEKELES-------------------------------------------------------------------------------------------------------------------
 call "%dirPRG%\scripts\#init\set_params.cmd" %*
-title RENDSZER KARBANTARTµSA   [%temporary%%usn%%defrag%%virscan%%poweroff%]
+title RENDSZER KARBANTARTµSA   [%temporary%%logs%%usn%%defrag%%virscan%%poweroff%]
 
 rem =======================================================================================================================================================================================
 rem =======================================================================================================================================================================================
@@ -24,6 +24,7 @@ rem call %sScript% clear recent.cmd
 call %sScript% clear temp.cmd
 call %sScript% clear install.cmd
 if "%temporary%" == "T" call %sScript% clear temporary.cmd
+if "%logs%" == "L" call %sScript% clear logs.cmd
 if "%usn%" == "U" call %sScript% clear fs.cmd
 
 rem ---DEFRAG--------------------------------------------------------------------------------------------------------------------------------
