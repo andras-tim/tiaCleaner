@@ -1,5 +1,5 @@
 @echo off
-REM Keszitette: Tim Andras @ 2008
+REM Keszitette: Tim Andras @ 2009
 
 set vst=%aMAPP%\vst
 set vir=
@@ -13,7 +13,7 @@ goto VirScanTool
 
 :VirScan
   echo  * V¡rusellen‹rz‚s...
-  start "" /wait "%aMAPP%\vs-%vir%.vbs"
+  start "" /wait "%aMAPP%\vs-%vir%_hdd.vbs" "%1"
   call "%dirTMP%\tmp_virscan.cmd"
   del "%dirTMP%\tmp_virscan.cmd"
 goto vege
@@ -23,17 +23,17 @@ goto vege
 	echo    (Nincs t mogatott v¡rus¡rt¢ feltelep¡tve)
 	
 	set vstNev=avast! Virus Cleaner Tool
-	  set vstSTART=0
-		set vstCMD=avast.cmd
-		set vstCOPY=
-    set vstDL=http://files.avast.com/files/eng/aswclnr.exe
-		call "%aMAPP%\#tool.cmd"
-	
+	set vstSTART=0
+	set vstCMD=avast.cmd
+	set vstCOPY=
+	set vstDL=http://files.avast.com/files/eng/aswclnr.exe
+	call "%aMAPP%\#tool.cmd" "%1"
+
 	set vstNev=McAfee Stinger
-	  set vstSTART=0
-	  set vstCMD=stinger.cmd
-		set vstCOPY=
-    set vstDL=http://download.nai.com/products/mcafee-avert/stinger.exe
-		call "%aMAPP%\#tool.cmd"
+	set vstSTART=0
+	set vstCMD=stinger.cmd
+	set vstCOPY=
+	set vstDL=http://download.nai.com/products/mcafee-avert/stinger.exe
+	call "%aMAPP%\#tool.cmd" "%1"
 
 :vege

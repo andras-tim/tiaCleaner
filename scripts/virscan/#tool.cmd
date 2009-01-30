@@ -18,10 +18,10 @@ start "" /wait "%dirBIN%\wget" %vstDL% -O "%dirTMP%\tmp_virscan_tool.exe"
 :virscan
 if not exist "%dirTMP%\tmp_virscan_tool.exe" goto vege
 if "%vstSTART%" == "1" goto tarsitottstart
-call "%aMAPP%\vst-%vstCMD%"
+call "%aMAPP%\vst-%vstCMD%" "%1"
 goto clean
 :tarsitottstart
-start "" /wait "%aMAPP%\vst-%vstCMD%"
+start "" /wait "%aMAPP%\vst-%vstCMD%" "%1"
 
 :clean
 del "%dirTMP%\tmp_virscan_tool.exe"
