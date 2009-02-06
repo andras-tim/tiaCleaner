@@ -25,7 +25,6 @@ rem ---CLEAR--------------------------------------------------------------------
 call %sScript% clear temp.cmd
 call %sScript% clear install.cmd
 if "%temporary%" == "T" call %sScript% clear temporary.cmd
-if "%recent%" == "R" call %sScript% clear reg-recent.cmd
 if "%recent%" == "R" call %sScript% clear recent.cmd
 if "%logs%" == "L" call %sScript% clear logs.cmd
 if "%usn%" == "U" call %sScript% clear fs.cmd
