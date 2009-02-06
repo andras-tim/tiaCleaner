@@ -1,8 +1,9 @@
 @echo off
-REM Keszitette: Tim Andras @ 2008
+REM Keszitette: Tim Andras @ 2009
 
 rem Binarisok mappaja
 set dirBIN=%dirPRG%\..\bin
+set dirDLBIN=%dirPRG%\bin
 
 rem Szkriptek mappaja
 set dirSCRIPTS=%dirPRG%\scripts
