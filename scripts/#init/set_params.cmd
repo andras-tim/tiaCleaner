@@ -36,7 +36,7 @@ set i=1
 shift && if %i% LSS 9 set /A i=i+1 && goto ciKiertekeles
 
 if "%BASE%" == "B" (
-	set memvirscan=M
+	rem set memvirscan=M
 	set temporary=T
 	rem set recent=R
 	set logs=L
@@ -47,7 +47,7 @@ if "%BASE%" == "B" (
 )
 
 if "%NORMAL%" == "N" (
-	set memvirscan=M
+	rem set memvirscan=M
 	set temporary=T
 	rem set recent=R
 	set logs=L
@@ -88,8 +88,8 @@ echo   -VScan       Meme¢ria ‚s a f jlrendszer v¡rusellen‹rz‚se
 echo   -PowerOff    A feladatok v‚g‚n a sz m¡t¢g‚p kikapcsol sa
 echo.
 echo Profilok:
-echo   -BASE        MVScan, Temporary, Log
-echo   -NORMAL      MVScan, Temporary, Log, USN, Defrag
+echo   -BASE        Temporary, Log 
+echo   -NORMAL      Temporary, Log, USN, Defrag (nincs Recent)
 echo   -ALL         Az ”sszes param‚ter kiv‚ve a PowerOff
 echo.
 exit
