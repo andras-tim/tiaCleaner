@@ -20,7 +20,7 @@ copy "%dirDLBIN%\dl_%vstID%_virscan_tool.exe" "%dirTMP%\tmp_virscan_tool.exe" > 
 if not exist "%dirTMP%\tmp_virscan_tool.exe" goto vege
 if "%vstSTART%" == "1" goto tarsitottstart
 call "%aMAPP%\vst-%vstID%.cmd" %1
-goto clean
+goto vege
 :tarsitottstart
 start "" /wait "%aMAPP%\vst-%vstID%.cmd" %1
 
