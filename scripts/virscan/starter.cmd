@@ -32,7 +32,7 @@ goto vege
 	set vstNev=McAfee Stinger
 	set vstSTART=0
 	set vstCOPY=
-	set vstDL=http://download.nai.com/products/mcafee-avert/stinger.exe
+	set vstDL=http://download.nai.com/products/mcafee-avert/stinger1010995.exe
 	call "%aMAPP%\#tool.cmd" %1
 
 :vege
