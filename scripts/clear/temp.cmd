@@ -31,11 +31,16 @@ rem echo          * Google Earth...
 rem del "%USERPROFILE%\Local Settings\Application Data\Google\GoogleEarth\dbCache.dat" > "%null1%" 2> "%null2%"
 rem del "%USERPROFILE%\Local Settings\Application Data\Google\GoogleEarth\dbCache.dat.index" > "%null1%" 2> "%null2%"
 
+rem Adobe
+echo          * Adobe...
+rmdir "%SYSTEMROOT%\Program Files\Adobe\AdobePatchFiles" > "%null1%" 2> "%null2%
+
+rem Intel
+echo          * Intel...
+rmdir "%WINDIR%\..\Intel" > "%null1%" 2> "%null2%
+
 echo          * Egy‚b...
 rem MSOCache, CloneDVD
 start "" /wait "%aMAPP%\temp_seged.vbs"
 call "%dirTMP%\tmp_clear_temp.cmd"
 del "%dirTMP%\tmp_clear_temp.cmd"
-
-rem Intel
-rmdir "%WINDIR%\..\Intel" > "%null1%" 2> "%null2%
