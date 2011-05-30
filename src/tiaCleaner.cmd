@@ -139,7 +139,7 @@ echo.
 set t=Csomag mozgat sa... [ 4 / 5 ]
 title %t%
 set pOK=0
-"%dirPRG%\bin\mv" "%dirPRG%\unpack\*" "%dirPRG%\dl" && set pOK=1
+"%dirPRG%\bin\mv" "%dirPRG%\unpack\andras-tim-tiaCleaner-*" "%dirPRG%\dl" && set pOK=1
 if "pOK" == "0" (
   if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
   goto dlhiba
