@@ -1,15 +1,16 @@
 @echo off
-REM Keszitette: Tim Andras @ 2009
+REM Keszitette: Tim Andras @ 2011
 
-title RENDSZER KARBANTARTµSA
+title RENDSZER KARBANTARTµSA - tiaCleaner
 echo           (b†rmikor le†ll°thatod a jobb felsã sarokban lÇvã 'X'-szel.)
 echo.
 
 set pcName=>#FN#<
 set dirPRG=>#PDIR#<
-set server=tia.sytes.net
-set spath=public/snail/karbantartas
-set sdirLOG=\\szerver\Kliens segÇdletek\logs
+set server=github.com
+set urlVer=http://andras-tim.github.com/tiaCleaner/ver.txt
+set urlDL=http://github.com/andras-tim/tiaCleaner/zipball/master
+rem set sdirLOG=
 
 set null="%temp%\ping.tmp"
 
@@ -32,9 +33,9 @@ rem ---Offline Åzemm¢d----------------------------------------------------------
 if "%VanPC%" == "0" (
 :Offline
   echo      * Offline Åzemm¢d,     Verzi¢: %ldate%
-  set sdirLOG=%dirPRG%\DL\MyLogs
+  set sdirLOG=%dirPRG%\dl\MyLogs
   rem Offline installer
-  if exist "%dirPRG%\sm_karb.rar" goto update
+  if exist "%dirPRG%\libs.zip" goto update
   goto Start
 )
 
@@ -43,8 +44,8 @@ echo      * Online Åzemm¢d       Verzi¢: %ldate%
 echo      * T†voli verzi¢ lekÇrdezÇse...
 
 set DlOK=0
-"%dirPRG%\bin\wget" http://%server%/%spath%/ver.txt -O "%dirPRG%\rver.txt" 2> %null% && set DlOK=1
-title RENDSZER KARBANTARTµSA
+"%dirPRG%\bin\wget" %urlVer% -O "%dirPRG%\rver.txt" 2> %null% && set DlOK=1
+title RENDSZER KARBANTARTµSA - tiaCleaner
 if "%DlOK%" == "0" (
   echo                                     HIBA lÇpett fel szerver lekÇrdezÇse kîzben!
   goto Offline
@@ -65,23 +66,21 @@ if "%ldate%" == "%rdate%" (
 :update
 echo     * Csomag friss°tÇse... Verzi¢: %rdate%
 start /WAIT "" %0 #$—ù$#
-if not exist "%dirPRG%\tia_karb_autodl.rar" goto nincs
+if not exist "%dirPRG%\libs_autodl.zip" goto nincs
 
 :Start
 rem ---Takaritas-----------------------------------------------------------------------------------------------------
-if exist "%dirPRG%\tia_karb_autodl.rar" del "%dirPRG%\tia_karb_autodl.rar"
+if exist "%dirPRG%\libs_autodl.zip" del "%dirPRG%\libs_autodl.zip"
 if exist "%dirPRG%\rver.txt" del "%dirPRG%\rver.txt"
 if exist %null% del %null%
 
 
-
 rem ---Futtatas kiertekelese-----------------------------------------------------------------------------------------
 echo.
-if not exist "%dirPRG%\DL\maxi_karbantartas.cmd" goto nincs
-set dirPRG=%dirPRG%\DL
+if not exist "%dirPRG%\dl\maxi_karbantartas.cmd" goto nincs
+set dirPRG=%dirPRG%\dl
 "%dirPRG%\maxi_karbantartas.cmd" %pcName% %*
 exit
-
 
 
 :nincs
@@ -96,20 +95,20 @@ exit
 
 :INSTALLER
 cls
-set t=Csomag beszerzÇse... [ 1 / 4 ]
+set t=Csomag beszerzÇse... [ 1 / 5 ]
 title %t%
-if not exist "%dirPRG%\sm_karb.rar" goto dl
-ren "%dirPRG%\sm_karb.rar" "tia_karb_autodl.rar"
+if not exist "%dirPRG%\libs.zip" goto dl
+ren "%dirPRG%\libs.zip" "libs_autodl.zip"
 goto cleanup
 
 :dl
-if exist "%dirPRG%\tia_karb_autodl.rar" del "%dirPRG%\tia_karb_autodl.rar"
+if exist "%dirPRG%\libs_autodl.zip" del "%dirPRG%\libs_autodl.zip"
 set pOK=0
-call "%dirPRG%\bin\wget" http://%server%/%spath%/sm_karb.rar -O "%dirPRG%\tia_karb_autodl.rar" && set pOK=1
+call "%dirPRG%\bin\wget" %urlDL% -O "%dirPRG%\libs_autodl.zip" && set pOK=1
 title %t%
 if "pOK" == "0" (
-  if exist "%dirPRG%\tia_karb_autodl.rar" (
-    del "%dirPRG%\tia_karb_autodl.rar"
+  if exist "%dirPRG%\libs_autodl.zip" (
+    del "%dirPRG%\libs_autodl.zip"
     del "%dirPRG%\ver.txt"
   )
   goto dlhiba
@@ -117,35 +116,47 @@ if "pOK" == "0" (
 
 :cleanup
 if not exist dl goto unpack
-set t=Elãzã csomag elt†vol°t†sa   [ 2 / 4 ]
+set t=Elãzã csomag elt†vol°t†sa   [ 2 / 5 ]
 title %t%
-call rmdir /s /q "%dirPRG%\dl"
+if exist "%dirPRG%\dl" call rmdir /s /q "%dirPRG%\dl"
+if exist "%dirPRG%\Unpack" call rmdir /s /q "%dirPRG%\unpack"
 
 :unpack
-if not exist "%dirPRG%\dl" mkdir "%dirPRG%\dl"
+if not exist "%dirPRG%\unpack" mkdir "%dirPRG%\unpack"
 echo.
 echo.
-set t=Csomag kitîmîr°tÇse... [ 3 / 4 ]
+set t=Csomag kitîmîr°tÇse... [ 3 / 5 ]
 title %t%
 set pOK=0
-"%dirPRG%\bin\unrar" x -ts -r -o+ "%dirPRG%\tia_karb_autodl.rar" "%dirPRG%\DL\"
+"%dirPRG%\bin\unzip" -x "%dirPRG%\libs_autodl.zip" -d "%dirPRG%\unpack" && set pOK=1
 if "pOK" == "0" (
-  if exist "%dirPRG%\DL\maxi_karbantartas.cmd" del "%dirPRG%\DL\maxi_karbantartas.cmd"
+  if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
   goto dlhiba
 )
 
 echo.
 echo.
-set t=Csomag ÇrvÇnyes°tÇse... [ 4 / 4 ]
+set t=Csomag mozgat†sa... [ 4 / 5 ]
+title %t%
+set pOK=0
+"%dirPRG%\bin\mv" "%dirPRG%\unpack\*" "%dirPRG%\dl" && set pOK=1
+if "pOK" == "0" (
+  if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
+  goto dlhiba
+)
+rmdir /s /q "%dirPRG%\unpack"
+
+echo.
+echo.
+set t=Csomag ÇrvÇnyes°tÇse... [ 5 / 5 ]
 title %t%
 set pOK=0
 del "%dirPRG%\ver.txt"
 ren "%dirPRG%\rver.txt" "ver.txt" && set pOK=1
 if "pOK" == "0" (
-  if exist "%dirPRG%\DL\maxi_karbantartas.cmd" del "%dirPRG%\DL\maxi_karbantartas.cmd"
+  if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
   goto dlhiba
 )
-
 exit
 
 :dlhiba
@@ -157,6 +168,4 @@ echo.
 echo.
 pause
 exit
-
-
 
