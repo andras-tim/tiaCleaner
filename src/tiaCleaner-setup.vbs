@@ -1,10 +1,10 @@
 'Keszitette: Tim Andras @ 2009
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set objFile = objFSO.GetFile("karbantartas.cmd")
+Set objFile = objFSO.GetFile("tiaCleaner.cmd")
 
 If objFile.Size > 0 Then
-    Set objReadFile = objFSO.OpenTextFile("karbantartas.cmd", 1)
+    Set objReadFile = objFSO.OpenTextFile("tiaCleaner.cmd", 1)
     strContents = objReadFile.ReadAll
     objReadFile.Close
 Else
@@ -19,14 +19,14 @@ aUser = LCase(WshNetwork.ComputerName)
 if aUser = "" Then aUser = InputBox("Adja meg a felhasználó nevét!", "Személyes beállítások", aUser)
 if aUser = "" then aUser = "#user"
 
-Set FileTxt = objFSO.OpenTextFile("karbantartas.cmd", ForWriting ,True)
+Set FileTxt = objFSO.OpenTextFile("tiaCleaner.cmd", ForWriting ,True)
   strContents=replace(strContents, ">#FN#<", aUser)
   strContents=replace(strContents, ">#PDIR#<", objFile.ParentFolder.Path)
   FileTxt.WriteLine(strContents)
 FileTxt.Close
 
 
-objFSO.GetFile("karbantartas setup.vbs").Delete
+objFSO.GetFile("tiaCleaner-setup.vbs").Delete
 
 
 

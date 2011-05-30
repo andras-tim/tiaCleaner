@@ -1,11 +1,11 @@
 ;A következõ megjegyzés SFX script parancsokat tartalmaz
 
-Path=TiA Karbantartas
-Setup="karbantartas setup.vbs"
-Title=Karbantartás
+Path=tiaCleaner
+Setup="tiaCleaner-setup.vbs"
+Title=tiaCleaner
 Text
 {
 <u>Ajánlott ikon a parancsikonnak:</u><br/>
 %SystemRoot%\system32\cleanmgr.exe
 }
-Shortcut=S, "karbantartas.cmd", "", "", "Karbantartás"
+Shortcut=S, "tiaCleaner.cmd", "", "", "tiaCleaner"
