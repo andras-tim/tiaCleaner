@@ -1,5 +1,6 @@
 @echo off
 REM Keszitette: Tim Andras @ 2011
+if "%*" == "#$—ù$#" goto INSTALLER
 
 title RENDSZER KARBANTARTµSA - tiaCleaner
 echo           (b†rmikor le†ll°thatod a jobb felsã sarokban lÇvã 'X'-szel.)
@@ -14,22 +15,19 @@ rem set sdirLOG=
 
 set null="%temp%\ping.tmp"
 
-rem ---Jelenlegi verzio megallapitasa--------------------------------------------------------------------------------
+rem ---Jelenlegi verzio megallapitasa---
 if exist "%dirPRG%\ver.txt" (
   set /p ldate= < "%dirPRG%\ver.txt"
 ) else (
   set ldate=ismeretlen
 )
 
-rem ---Sajat meghivas volt?------------------------------------------------------------------------------------------
-if "%*" == "#$—ù$#" goto INSTALLER
-
-rem ---Szerver ellenorzese-------------------------------------------------------------------------------------------
+rem ---Szerver ellenorzese---
 echo * Csatlakoz†s a szerverhez...
 set VanPC=0
 ping %server% -n 1 > %null% && set VanPC=1
 
-rem ---Offline Åzemm¢d-----------------------------------------------------------------------------------------------
+rem ---Offline uzemmod---
 if "%VanPC%" == "0" (
 :Offline
   echo      * Offline Åzemm¢d,     Verzi¢: %ldate%
@@ -39,7 +37,7 @@ if "%VanPC%" == "0" (
   goto Start
 )
 
-rem ---Online Åzemm¢d------------------------------------------------------------------------------------------------
+rem ---Online uzemmod---
 echo      * Online Åzemm¢d       Verzi¢: %ldate%
 echo      * T†voli verzi¢ lekÇrdezÇse...
 
@@ -51,7 +49,7 @@ if "%DlOK%" == "0" (
   goto Offline
 )
 
-rem ---Tavoli verzio kinyerese--------------------------------------------------------------------------------------
+rem ---Tavoli verzio kinyerese---
 if exist "%dirPRG%\rver.txt" (
   set /p rdate= < "%dirPRG%\rver.txt"
 ) else (
@@ -69,13 +67,13 @@ start /WAIT "" %0 #$—ù$#
 if not exist "%dirPRG%\libs_autodl.zip" goto nincs
 
 :Start
-rem ---Takaritas-----------------------------------------------------------------------------------------------------
+rem ---Takaritas---
 if exist "%dirPRG%\libs_autodl.zip" del "%dirPRG%\libs_autodl.zip"
 if exist "%dirPRG%\rver.txt" del "%dirPRG%\rver.txt"
 if exist %null% del %null%
 
 
-rem ---Futtatas kiertekelese-----------------------------------------------------------------------------------------
+rem ---Futtatas kiertekelese---
 echo.
 if not exist "%dirPRG%\dl\maxi_karbantartas.cmd" goto nincs
 set dirPRG=%dirPRG%\dl
@@ -91,8 +89,7 @@ echo.
 pause
 exit
 
-
-
+rem ======INSTALLER=====================================================================================================
 :INSTALLER
 cls
 set t=Csomag beszerzÇse... [ 1 / 5 ]
@@ -104,9 +101,9 @@ goto cleanup
 :dl
 if exist "%dirPRG%\libs_autodl.zip" del "%dirPRG%\libs_autodl.zip"
 set pOK=0
-call "%dirPRG%\bin\wget" %urlDL% -O "%dirPRG%\libs_autodl.zip" && set pOK=1
+"%dirPRG%\bin\wget" %urlDL% -O "%dirPRG%\libs_autodl.zip" && set pOK=1
 title %t%
-if "pOK" == "0" (
+if "%pOK%" == "0" (
   if exist "%dirPRG%\libs_autodl.zip" (
     del "%dirPRG%\libs_autodl.zip"
     del "%dirPRG%\ver.txt"
@@ -118,8 +115,8 @@ if "pOK" == "0" (
 if not exist dl goto unpack
 set t=Elãzã csomag elt†vol°t†sa   [ 2 / 5 ]
 title %t%
-if exist "%dirPRG%\dl" call rmdir /s /q "%dirPRG%\dl"
-if exist "%dirPRG%\Unpack" call rmdir /s /q "%dirPRG%\unpack"
+if exist "%dirPRG%\dl" rmdir /s /q "%dirPRG%\dl"
+if exist "%dirPRG%\unpack" rmdir /s /q "%dirPRG%\unpack"
 
 :unpack
 if not exist "%dirPRG%\unpack" mkdir "%dirPRG%\unpack"
@@ -129,7 +126,7 @@ set t=Csomag kitîmîr°tÇse... [ 3 / 5 ]
 title %t%
 set pOK=0
 "%dirPRG%\bin\unzip" -x "%dirPRG%\libs_autodl.zip" -d "%dirPRG%\unpack" && set pOK=1
-if "pOK" == "0" (
+if "%pOK%" == "0" (
   if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
   goto dlhiba
 )
@@ -140,7 +137,7 @@ set t=Csomag mozgat†sa... [ 4 / 5 ]
 title %t%
 set pOK=0
 "%dirPRG%\bin\mv" "%dirPRG%\unpack\andras-tim-tiaCleaner-*" "%dirPRG%\dl" && set pOK=1
-if "pOK" == "0" (
+if "%pOK%" == "0" (
   if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
   goto dlhiba
 )
@@ -153,7 +150,7 @@ title %t%
 set pOK=0
 del "%dirPRG%\ver.txt"
 ren "%dirPRG%\rver.txt" "ver.txt" && set pOK=1
-if "pOK" == "0" (
+if "%pOK%" == "0" (
   if exist "%dirPRG%\dl\maxi_karbantartas.cmd" del "%dirPRG%\dl\maxi_karbantartas.cmd"
   goto dlhiba
 )
@@ -168,4 +165,3 @@ echo.
 echo.
 pause
 exit
-
